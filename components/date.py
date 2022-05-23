@@ -10,10 +10,10 @@ def welcome():
     hour = int(datetime.now().hour)
 
     if hour >= 0 and hour < 12:
-        speak("Bom dia!")
+        speak("Bom dia! Acesso liberado")
 
     elif hour >= 12 and hour < 18:
-        speak("Boa tarde!")
+        speak("Boa tarde! Acesso liberado")
 
     else:
-        speak("Boa noite!")
+        speak("Boa noite! Acesso liberado")

@@ -1,6 +1,5 @@
 from components.date import date, welcome
 from components.events import read_event, save_event
-from components.music import music
 from components.speak import speak
 from components.voice import microphone
 from components.weather import temp
@@ -8,13 +7,17 @@ import webbrowser
 from speech_recognition import WaitTimeoutError, UnknownValueError
 
 
-def voiceCommands():
+
+def voiceComands():
     welcome()
 
     while True:
         try:
-            print("Sim. O que devo fazer?")
-            speak("Sim. O que devo fazer?")
+            
+            if microphone().lower() == 'ok assistente':
+                speak("Sim. O que devo fazer?")
+            #print("O que você deseja?")
+            #speak("O que você deseja?")
 
             desire = microphone().lower()
             print(desire)
@@ -37,24 +40,28 @@ def voiceCommands():
             elif desire == 'fale data e hora':
                 print(date())
                 speak(date())
+                
+            elif desire == 'sintomas da gripe':
+                webbrowser.open("sintomas da gripe")
+                speak("Aqui estão alguns resultados para os sintomas da gripe")
 
-            elif desire == 'toque uma música':
-                print("tocando music")
-                music()
+            elif desire == 'ligar para pronto socorro':
+                webbrowser.open("pronto socorro hospitais")
+                speak("Aqui estão alguns números de hospitais que você pode ligar para emergência, mas é recomendado que ligue para o Samú. Disque 1,9,2 ")
 
             elif desire == 'me diga como está o tempo hoje':
                 print(temp())
                 speak(temp())
 
-            elif desire == 'quero escutar uma música':
-                webbrowser.open("https://www.youtube.com/watch?v=f2D2hEFnHLU")
-                print("Vou te mostrar o que é musica de verdade, essa é do balácu bácu")
-                speak("Vou te mostrar o que é musica de verdade, essa é do balácu bácu")
+            elif desire == 'quero escutar uma música relaxante':
+                webbrowser.open("https://www.youtube.com/watch?v=Ncbm0Bqk1lk")
+                print("Aqui está uma música ótima para que vc possa relaxar")
+                speak("Aqui está uma música ótima para que vc possa relaxar")
 
-            elif desire == 'abrir youtube':
-                webbrowser.open("youtube.com")
-                print("Youtube aberto.")
-                speak("Youtube aberto.")
+            elif desire == 'acessar site de consulta':
+                webbrowser.open("drconsulta.com")
+                print("Dr consulta acessado.")
+                speak("Dr consulta acessado.")
 
             else:
                 print('Desculpa, não entendi o que você está querendo dizer. Poderia repetir?')
@@ -69,3 +76,5 @@ def voiceCommands():
         except Exception as ex:
             print(ex)
             pass
+
+

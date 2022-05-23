@@ -12,6 +12,9 @@ def faceRecognition(image):
 
     for x, y, l, a in faces:
         imagem = cv2.rectangle(imagem, (x, y), (x + l, y + a), (0, 255, 0), 2)
-
+       
+        cv2.imshow('reconhecer imagem', imagem)
+        cv2.waitKey(0)
+        
         return len(imagem) > 0 if True else False
-    cv2.waitKey(3000)
+

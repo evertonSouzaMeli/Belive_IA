@@ -1,8 +1,9 @@
+from components.speak import speak
 import recognition.image_recognition as ir
 import recognition.voice_recognition as vr
 
-
-if ir.faceRecognition(image='face_1.jpeg'):
-    vr.voiceCommands()
+resp = ir.faceRecognition(image='face_2.jpeg')
+if resp:
+    vr.voiceComands()
 else:
-    print('Não Autorizado')
+    speak('Rosto não identificado. Acesso negado.')
